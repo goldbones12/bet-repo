@@ -1,0 +1,162 @@
+<ion-content>
+  <ion-grid>
+    <ion-row *ngFor="let commonpart of commonparts; let i = index">
+      <ion-col class=colind>
+        <div class="fixedheight">
+          <ion-list>
+            <ion-item class="itemfirscol a">
+              <ion-label floating>Home Team</ion-label>
+              <ion-input class="inputfircol b" type="text"></ion-input>
+            </ion-item>
+          </ion-list>
+        </div>
+        <div class="fixedheight">
+          <ion-list>
+            <ion-item class="itemfirscol b">
+              <ion-label floating>Away Team</ion-label>
+              <ion-input class="inputfircol b" type="text"></ion-input>
+            </ion-item>
+          </ion-list>
+        </div>
+        <div class="title title3">TEAM COMBINATION</div>
+        <div class="divLast col1"></div>
+      </ion-col>
+      <ion-col>
+        <div class="fixedheight">
+          <div id="labeltxt">N goals from last 5 home games:</div>
+          <ion-item>
+            <ion-input type="number" [value]="commonparts[i].hh1" [(ngModel)]="commonparts[i].hh1" min="0" max="40" step="1"></ion-input>
+            <ion-input type="number" [value]="commonparts[i].hh2" [(ngModel)]="commonparts[i].hh2" min="0" max="40" step="1"></ion-input>
+            <ion-input type="number" [value]="commonparts[i].hh3" [(ngModel)]="commonparts[i].hh3" min="0" max="40" step="1"></ion-input>
+            <ion-input type="number" [value]="commonparts[i].hh4" [(ngModel)]="commonparts[i].hh4" min="0" max="40" step="1"></ion-input>
+            <ion-input type="number" [value]="commonparts[i].hh5" [(ngModel)]="commonparts[i].hh5" min="0" max="40" step="1"></ion-input>
+          </ion-item>
+        </div>
+        <div class="fixedheight">
+          <div id="labeltxt">N goals from last 5 away games::</div>
+          <ion-item>
+            <ion-input type="number" [value]="commonparts[i].aa1" [(ngModel)]="commonparts[i].aa1" min="0" max="40" step="1"></ion-input>
+            <ion-input type="number" [value]="commonparts[i].aa2" [(ngModel)]="commonparts[i].aa2" min="0" max="40" step="1"></ion-input>
+            <ion-input type="number" [value]="commonparts[i].aa3" [(ngModel)]="commonparts[i].aa3" min="0" max="40" step="1"></ion-input>
+            <ion-input type="number" [value]="commonparts[i].aa4" [(ngModel)]="commonparts[i].aa4" min="0" max="40" step="1"></ion-input>
+            <ion-input type="number" [value]="commonparts[i].aa5" [(ngModel)]="commonparts[i].aa5" min="0" max="40" step="1"></ion-input>
+          </ion-item>
+        </div>
+        <ion-item>
+          <ion-label id="labeltxt">Select goal Markets</ion-label>
+          <ion-select class="combosel" [(ngModel)]="commonparts[i].marketGoals">
+            <ion-option value="overOneHT" selected="true">Over 1,5 Half Time</ion-option>
+            <ion-option value="overTwoFT">Over 2,5 Full Time</ion-option>
+            <ion-option value="overThreeFT">Over 3,5 Full Time</ion-option>
+          </ion-select>
+        </ion-item>
+        <div class="divLast col23"></div>
+      </ion-col>
+      <ion-col>
+        <div class="fixedheight">
+          <ion-label id=labeltxt>N goals from last 5 overall games:</ion-label>
+          <ion-item>
+            <ion-input type="number" [value]="commonparts[i].ho1" [(ngModel)]="commonparts[i].ho1" min="0" max="40" step="1"></ion-input>
+            <ion-input type="number" [value]="commonparts[i].ho2" [(ngModel)]="commonparts[i].ho2" min="0" max="40" step="1"></ion-input>
+            <ion-input type="number" [value]="commonparts[i].ho3" [(ngModel)]="commonparts[i].ho3" min="0" max="40" step="1"></ion-input>
+            <ion-input type="number" [value]="commonparts[i].ho4" [(ngModel)]="commonparts[i].ho4" min="0" max="40" step="1"></ion-input>
+            <ion-input type="number" [value]="commonparts[i].ho5" [(ngModel)]="commonparts[i].ho5" min="0" max="40" step="1"></ion-input>
+          </ion-item>
+        </div>
+        <div class="fixedheight">
+          <ion-label id=labeltxt>N goals from last 5 overall games:</ion-label>
+          <ion-item>
+            <ion-input type="number" [value]="commonparts[i].ao1" [(ngModel)]="commonparts[i].ao1" min="0" max="40" step="1"></ion-input>
+            <ion-input type="number" [value]="commonparts[i].ao2" [(ngModel)]="commonparts[i].ao2" min="0" max="40" step="1"></ion-input>
+            <ion-input type="number" [value]="commonparts[i].ao3" [(ngModel)]="commonparts[i].ao3" min="0" max="40" step="1"></ion-input>
+            <ion-input type="number" [value]="commonparts[i].ao4" [(ngModel)]="commonparts[i].ao4" min="0" max="40" step="1"></ion-input>
+            <ion-input type="number" [value]="commonparts[i].ao5" [(ngModel)]="commonparts[i].ao5" min="0" max="40" step="1"></ion-input>
+          </ion-item>
+        </div>
+        <ion-item>
+          <ion-label id="labeltxt">Is good weather?</ion-label>
+          <ion-select class="combosel" [(ngModel)]="commonparts[i].weather">
+            <ion-option value="yes">YES</ion-option>
+            <ion-option value="no">NO</ion-option>
+            <ion-option value="notknow">NOT KNOW</ion-option>
+          </ion-select>
+        </ion-item>
+        <div class="divLast col23"></div>
+      </ion-col>
+      <ion-col class="collastres">
+        <div class="fixedheight">
+          <div id=labeltxt>N goals last result:</div>
+          <ion-item>
+            <ion-input type="number" [value]="commonparts[i].hlast" [(ngModel)]="commonparts[i].hlast" min="0" max="40" step="1"></ion-input>
+          </ion-item>
+        </div>
+        <div class="fixedheight">
+          <div id=labeltxt>N goals last result:</div>
+          <ion-item>
+            <ion-input type="number" [value]="commonparts[i].alast" [(ngModel)]="commonparts[i].alast" min="0" max="40" step="1"></ion-input>
+          </ion-item>
+        </div>
+        <div>
+          <button ion-button (click)="calchome(i)">Calculate Home %</button>
+          <div>{{commonparts[i].resultcalchome}}</div>
+        </div>
+        <div class="divLast"></div>
+      </ion-col>
+      <ion-col>
+        <div class="fixedheight">
+          <ion-item>
+            <ion-label id="labeltxt">Had Game in Middle of week?</ion-label>
+            <ion-select class="combosel" [(ngModel)]="commonparts[i].hmiddle">
+              <ion-option value="yes">YES</ion-option>
+              <ion-option value="no">NO</ion-option>
+              <ion-option value="notknow">NOT KNOW</ion-option>
+            </ion-select>
+          </ion-item>
+        </div>
+        <div class="fixedheight">
+          <ion-item>
+            <ion-label id="labeltxt">Had Game in Middle of week?</ion-label>
+            <ion-select class="combosel" [(ngModel)]="commonparts[i].amiddle">
+              <ion-option value="yes">YES</ion-option>
+              <ion-option value="no">NO</ion-option>
+              <ion-option value="notknow">NOT KNOW</ion-option>
+            </ion-select>
+          </ion-item>
+        </div>
+        <button ion-button (click)="calcaway(i)">Calculate Away %</button>
+        <div>{{commonparts[i].resultcalcaway}}</div>
+        <div class="divLast"></div>
+      </ion-col>
+      <ion-col>
+        <div class="fixedheight">
+          <ion-item>
+            <ion-label id="labeltxt">Most influent player?</ion-label>
+            <ion-select class="combosel" [(ngModel)]="commonparts[i].hinfluent">
+              <ion-option value="yes">YES</ion-option>
+              <ion-option value="no">NO</ion-option>
+              <ion-option value="notknow">NOT KNOW</ion-option>
+            </ion-select>
+          </ion-item>
+        </div>
+        <div class="fixedheight">
+          <ion-item>
+            <ion-label id="labeltxt">Most influent player?</ion-label>
+            <ion-select class="combosel" [(ngModel)]="commonparts[i].ainfluent">
+              <ion-option value="yes">YES</ion-option>
+              <ion-option value="no">NO</ion-option>
+              <ion-option value="notknow">NOT KNOW</ion-option>
+            </ion-select>
+          </ion-item>
+        </div>
+        <div>
+          <button ion-button (click)="avgcalc()">Final Calculation %</button>
+          <div>{{commonparts[i].finalcalc}}</div>
+        </div>
+        <div class="divLast"></div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <button ion-button color="blue" outline icon-only (click)="addrow()">
+    <ion-icon name='add'></ion-icon>
+  </button>
+</ion-content>

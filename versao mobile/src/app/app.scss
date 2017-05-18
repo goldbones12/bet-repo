@@ -1,0 +1,170 @@
+#title{
+   border-bottom: none !important;
+   color: darkred;
+   font-size: 2.3rem;
+   font-weight: bold;
+}
+
+
+.select-text{
+    font-size: 12px !important;
+    margin-top:3px !important;
+}
+
+#lhomeaway{
+    max-width: 190px !important;
+}
+
+#glabel{
+padding-left: 16px;
+padding-top: 6px;
+}
+
+#goalMarketsLabel{
+ color: darkslategray;
+    font-size: 2.3rem;
+   font-weight: bold;
+   padding-left: 16px;
+}
+
+
+.item-md.item-input.ng-valid.input-has-value:not(.input-has-focus) .item-inner {
+    border-bottom-color: #dedede;
+    box-shadow: none;
+}
+
+#spacebetween{
+    height: 10px;
+}
+
+.item-md.item-block .item-inner {
+    padding-right: 8px;
+    border-bottom: 0px solid #dedede !important;
+}
+
+.item-input ion-label {
+    color: black !important;
+}
+
+ion-label {
+    max-width: 320px !important;
+}
+
+
+
+ion-input, ion-textarea {
+    position: relative;
+    display: block;
+    flex: 0 0 0%;
+}
+
+
+#inputgoals  .text-input{
+  border: 1px solid grey !important;
+  width: 40px;
+  min-width: 0;
+  display:table;
+
+}
+
+#inputgoals {
+    box-shadow: inset 0 -1px 11px 4px #e0e0e0;
+    border-bottom-color: #e0e0e0;
+}
+
+#middle .item-inner {
+  border-bottom: none;
+}
+
+#influential .item-inner {
+     border-bottom: none;
+}
+
+#weather .item-inner {
+border-bottom: none;
+}
+
+.button {
+  height: 2.8em;
+}
+
+.mom {
+    display: table;
+}
+.child {
+    display: table-cell;
+    padding-left: 20px;
+    vertical-align: middle;
+}
+.childinner {
+    margin-left: 25px;
+}
+.child:first-child .childinner {
+    margin-left: 0;
+}
+
+.item-md {
+    font-size: 1.4rem;
+}
+
+
+.item-md.item-input.input-has-focus .item-inner {
+  border-bottom-color: transparent !important;
+  box-shadow: none !important;
+}
+
+.list-md .item-input.input-has-focus:last-child {
+  border-bottom-color: transparent !important;
+  box-shadow: none !important;
+}
+
+.list-md .item-input.input-has-focus:last-child .item-inner {
+  box-shadow: none;
+}
+
+.item-md.item-input.ng-valid.input-has-value:not(.input-has-focus) .item-inner {
+  border-bottom-color: transparent !important;
+  box-shadow: none !important;
+}
+
+.list-md .item-input.ng-valid.input-has-value:not(.input-has-focus):last-child {
+  border-bottom-color: transparent !important;
+  box-shadow: none !important;
+}
+
+.list-md .item-input.ng-valid.input-has-value:not(.input-has-focus):last-child .item-inner {
+  box-shadow: none;
+}
+
+.item-md.item-input.ng-invalid.ng-touched:not(.input-has-focus) .item-inner {
+  border-bottom-color: transparent !important;
+  box-shadow: none !important;
+}
+
+.list-md .item-input.ng-invalid.ng-touched:not(.input-has-focus):last-child {
+  border-bottom-color: transparent !important;
+  box-shadow: none !important;
+}
+
+
+body {
+    cursor: url('http://ionicframework.com/img/finger.png'), auto;
+}
+
+.header .col {
+    background-color:lightgrey;
+}
+
+.col {
+    border: solid 1px grey;
+    border-bottom-style: none;
+    border-right-style: none;
+}
+
+.col:last-child {
+    border-right: solid 1px grey;
+}
+
+.row:last-child .col {
+    border-bottom: solid 1px grey;
+}
