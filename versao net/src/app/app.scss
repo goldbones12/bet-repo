@@ -4,6 +4,7 @@
    font-size: 1.3rem;
    font-weight: bold;
    vertical-align: middle;
+   height:50px;
 }
 
 .itemfirscol{
@@ -14,30 +15,28 @@
     border: 0px !important;
 }
 
-
 .fixedheight{
   height:70px;
 }
 
-
+.fixedheightlast{
+  height:50px;
+}
 
 .item-block{
     min-height: 3.0rem;
 }
 
-    .collastres {
-            flex: 0 0 10px !important;
-    }
-.middlediv{
-    height: 18px;
+.collastres {
+    flex: 1px 0 50px !important;
 }
+
 .combosel{
     position: absolute !important;
     margin: 2px 10px 2px 0px;
 }
 
-.divLast
-{
+.divLast{
    margin:0px;  
    padding: 0px 2px 2px 3px;    
    border-width: 2px;
@@ -46,23 +45,13 @@
    width: 100%;
 }
 
-.col23
-{
-   margin:13px;  
-}
 
 
-.col1
-{
-   margin: 15px;
-}
-
- .text-input{
+.text-input{
   border: 1px solid grey !important;
   width: 40px;
   min-width: 0;
   display:table;
-
 }
 
 .row:last-child .col {
@@ -73,8 +62,8 @@
 }
 
 ion-label {
-     margin: 0px 0px 0px 0px !important; 
-     align-self: flex-start; 
+    margin: 0px 0px 0px 0px !important; 
+    align-self: flex-start; 
     display: border-box !important;
 }
 
@@ -89,39 +78,18 @@ ion-label {
     margin-top:3px !important;
 }
 
-#lhomeaway{
-    max-width: 190px !important;
-}
-
-#glabel{
-padding-left: 16px;
-padding-top: 6px;
-}
-
 #labeltxt{
  color: darkslategray;
  font-weight: bold;
 }
 
-#labelselect{
- color: darkslategray;
- font-weight: bold;
- height: 50px;
-}
-
-
 .item-md.item-input.ng-valid.input-has-value:not(.input-has-focus) .item-inner {
     border-bottom-color: #dedede;
     box-shadow: none;
-    
 }
 
 .item-md{
     align-items: flex-start !important;
-}
-
-#spacebetween{
-    height: 10px;
 }
 
 .text-input-md {
@@ -257,4 +225,13 @@ border-bottom: none;
 
 .row:last-child .col {
     border-bottom: solid 1px grey;
+}
+
+.addbutton{
+    margin-left: 40%;
+      font-size: 20px;
+}
+
+.collastresult{
+    max-width: 180px !important;
 }

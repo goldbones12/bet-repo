@@ -1,4 +1,3 @@
-import { NavController } from 'ionic-angular/index';
 import { Component } from "@angular/core";
 
 
@@ -14,11 +13,6 @@ export class BetApp {
     hh3: any;
     hh4: any;
     hh5: any;
-    ho1: any;
-    ho2: any;
-    ho3: any;
-    ho4: any;
-    ho5: any;
 
     //away
     aa1: any;
@@ -26,11 +20,6 @@ export class BetApp {
     aa3: any;
     aa4: any;
     aa5: any;
-    ao1: any;
-    ao2: any;
-    ao3: any;
-    ao4: any;
-    ao5: any;
 
 
     constructor() {
@@ -40,11 +29,7 @@ export class BetApp {
         this.hh3 = 0;
         this.hh4 = 0;
         this.hh5 = 0;
-        this.ho1 = 0;
-        this.ho2 = 0;
-        this.ho3 = 0;
-        this.ho4 = 0;
-        this.ho5 = 0;
+
 
         //away
         this.aa1 = 0;
@@ -53,10 +38,6 @@ export class BetApp {
         this.aa4 = 0;
         this.aa5 = 0;
         this.aa1 = 0;
-        this.ao2 = 0;
-        this.ao3 = 0;
-        this.ao4 = 0;
-        this.ao5 = 0;
     }
 
 
@@ -75,15 +56,8 @@ export class BetApp {
         nGoalsHH.push(arraysel.hh4);
         nGoalsHH.push(arraysel.hh5);
 
-        let nGoalsHO = new Array();
-        nGoalsHO.push(arraysel.ho1);
-        nGoalsHO.push(arraysel.ho2);
-        nGoalsHO.push(arraysel.ho3);
-        nGoalsHO.push(arraysel.ho4);
-        nGoalsHO.push(arraysel.ho5);
 
-
-        arraysel.resultcalchome = this.uniteresults(i, nGoalsHH, nGoalsHO, arraysel.hlast, arraysel.hmiddle, arraysel.hinfluent, arraysel.hweather);
+        arraysel.resultcalchome = this.uniteresults(i, nGoalsHH, arraysel.hlast, arraysel.hmiddle, arraysel.hinfluent, arraysel.hweather);
 
     }
 
@@ -97,22 +71,14 @@ export class BetApp {
         nGoalsAA.push(arraysel.aa4);
         nGoalsAA.push(arraysel.aa5);
 
-        let nGoalsAO = new Array();
-        nGoalsAO.push(arraysel.ao1);
-        nGoalsAO.push(arraysel.ao2);
-        nGoalsAO.push(arraysel.ao3);
-        nGoalsAO.push(arraysel.ao4);
-        nGoalsAO.push(arraysel.ao5);
-
-        arraysel.resultcalcaway = this.uniteresults(i, nGoalsAA, nGoalsAO, arraysel.alast, arraysel.amiddle, arraysel.ainfluent, arraysel.weather);
+        arraysel.resultcalcaway = this.uniteresults(i, nGoalsAA, arraysel.alast, arraysel.amiddle, arraysel.ainfluent, arraysel.weather);
 
     }
 
-    uniteresults(i: any, nGoalsHomeOut: Array<Number>, nGoalsOverall: Array<Number>, lastResult: string, middleWeek: string, influent: string, goodWeather: string): number {
+    uniteresults(i: any, nGoalsHomeOut: Array<Number>, lastResult: string, middleWeek: string, influent: string, goodWeather: string): number {
 
 
-        let percentageLast5Games: number = 30;
-        let percentageLast5GamesHomeOut: number = 30;
+        let percentageLast5GamesHomeOut: number = 60;
         let percentageGoalsLastResult: number = 10;
         let percentageMiddleWeek: number = 0;
         let percentageInfluentPlayer: number = 0;
@@ -136,8 +102,7 @@ export class BetApp {
                 percentageMiddleWeek = 10;
             }
             else if (middleWeek == "notknow") {
-                percentageLast5GamesHomeOut += 5;
-                percentageLast5Games += 5;
+                percentageLast5GamesHomeOut += 10;
             }
 
 
@@ -145,16 +110,14 @@ export class BetApp {
                 percentageInfluentPlayer = 15;
             }
             else if (influent == "notknow") {
-                percentageLast5GamesHomeOut += 7.5;
-                percentageLast5Games += 7.5;
+                percentageLast5GamesHomeOut += 15;
             }
 
             if (goodWeather == "yes") {
                 percentageGoodWeather = 5;
             }
             else if (goodWeather == "notknow") {
-                percentageLast5GamesHomeOut += 2.5;
-                percentageLast5Games += 2.5;
+                percentageLast5GamesHomeOut += 5;
             }
 
             let parameterLast5GamesHomeOut: number;
@@ -163,14 +126,7 @@ export class BetApp {
 
             if (parameterLast5GamesHomeOut != -1) {
 
-                let parameterLast5GamesOverall: number;
-
-                parameterLast5GamesOverall = this.getParameter5Goals(nGoalsOverall, percentageLast5Games, overGoals);
-
-                if (parameterLast5GamesHomeOut != -1) {
-
-                    resultcalc = parameterLast5GamesHomeOut + parameterLast5GamesOverall + parameterLastResult + percentageMiddleWeek + percentageInfluentPlayer + percentageGoodWeather;
-                }
+                resultcalc = parameterLast5GamesHomeOut + parameterLastResult + percentageMiddleWeek + percentageInfluentPlayer + percentageGoodWeather;
             }
         }
 
@@ -223,6 +179,10 @@ export class BetApp {
             overGoals = 3.5;
         }
         return overGoals;
+    }
+
+    deleterow(i: any) {
+        this.commonparts.splice(i, 1);
     }
 
 
