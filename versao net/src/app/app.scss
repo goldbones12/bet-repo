@@ -34,6 +34,7 @@
 .combosel{
     position: absolute !important;
     margin: 2px 10px 2px 0px;
+     max-width: 65% !important;
 }
 
 .divLast{
@@ -229,7 +230,7 @@ border-bottom: none;
 
 .addbutton{
     margin-left: 40%;
-      font-size: 20px;
+    font-size: 15px;
 }
 
 .collastresult{

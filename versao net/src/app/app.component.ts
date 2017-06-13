@@ -1,4 +1,5 @@
 import { Component } from "@angular/core";
+import { Angular2Csv } from 'angular2-csv/Angular2-csv';
 
 
 @Component({
@@ -6,7 +7,7 @@ import { Component } from "@angular/core";
 })
 export class BetApp {
 
-    public commonparts: Array<{ resultcalchome: number, resultcalcaway: number, finalcalc: number, hlast: string, alast: string, marketGoals: string, hmiddle: string, hinfluent: string, ainfluent: string, amiddle: string, weather: string }> = [];
+    public commonparts: Array<{ hteamname: string, ateamname: string, resultcalchome: number, resultcalcaway: number, finalcalc: number, hlast: string, alast: string, marketGoals: string, hmiddle: string, hinfluent: string, ainfluent: string, amiddle: string, weather: string }> = [];
     //home
     hh1: any;
     hh2: any;
@@ -42,7 +43,7 @@ export class BetApp {
 
 
     public addrow(): void {
-        this.commonparts.push({ resultcalchome: 0, resultcalcaway: 0, finalcalc: 0, hlast: '', alast: '', marketGoals: 'overOneHT', hmiddle: 'notknow', hinfluent: 'notknow', ainfluent: 'notknow', amiddle: 'notknow', weather: 'notknow' });
+        this.commonparts.push({ hteamname: '', ateamname: '', resultcalchome: 0, resultcalcaway: 0, finalcalc: 0, hlast: '', alast: '', marketGoals: 'overOneHT', hmiddle: 'notknow', hinfluent: 'notknow', ainfluent: 'notknow', amiddle: 'notknow', weather: 'notknow' });
     }
 
     calchome(i: any) {
@@ -198,6 +199,41 @@ export class BetApp {
         }
 
         arraysel.finalcalc = (arraysel.resultcalchome + arraysel.resultcalcaway) / 2;
+    }
+
+    exportdata() {
+
+
+        for (var i = 0; i < this.commonparts.length; i++) {
+
+            var data = [
+                {
+                    homeTeam: "Home Team Name: " + this.commonparts[i].hteamname,
+                    nGoalsLast5Games: "N Goals Last 5 Games: " + this.commonparts[i],
+                    nGoalsLastResult: "N Goals Last Result: " + this.commonparts[i].hlast,
+                    middleWeek: "Had Game in middle of week: " + this.commonparts[i].hmiddle,
+                    mostInfluentPlayer: "Most Inluent Player: " + this.commonparts[i].hinfluent
+                },
+                {
+                    homeTeam: "Away Team Name: " + this.commonparts[i].ateamname,
+                    nGoalsLast5Games: "N Goals Last 5 Games: " + this.commonparts[i],
+                    nGoalsLastResult: "N Goals Last Result: " + this.commonparts[i].alast,
+                    middleWeek: "Had Game in middle of week: " + this.commonparts[i].amiddle,
+                    mostInfluentPlayer: "Most Inluent Player: " + this.commonparts[i].ainfluent
+                },
+                {
+                    goalsMarket: "Goals Market: " + this.commonparts[i].ateamname,
+                    goodWeather: "Is Good Weather: " + this.commonparts[i].ateamname,
+                    calchome: "Calc Home: " + this.commonparts[i].ateamname,
+                    calcaway: "Calc Away: " + this.commonparts[i].ateamname,
+                    finalcalc: "Final Calc: " + this.commonparts[i].ateamname
+                },
+            ];
+        }
+
+
+
+        new Angular2Csv(data, 'My Report');
     }
 
 }

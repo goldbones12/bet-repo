@@ -6,7 +6,7 @@
           <ion-list>
             <ion-item class="itemfirscol a">
               <ion-label floating>Home Team</ion-label>
-              <ion-input class="inputfircol b" type="text"></ion-input>
+              <ion-input class="inputfircol b" type="text" [value]="commonparts[i].hteamname"></ion-input>
             </ion-item>
           </ion-list>
         </div>
@@ -14,7 +14,7 @@
           <ion-list>
             <ion-item class="itemfirscol b">
               <ion-label floating>Away Team</ion-label>
-              <ion-input class="inputfircol b" type="text"></ion-input>
+              <ion-input class="inputfircol b" type="text" [value]="commonparts[i].ateamname"></ion-input>
             </ion-item>
           </ion-list>
         </div>
@@ -150,4 +150,7 @@
   <button class="addbutton" ion-button color="blue" outline icon-only (click)="addrow()">
     <ion-icon name='add'></ion-icon>
   </button>
+  <div class="addbutton">
+    <img src="assets/img/excelicon.png" alt="Export" (click)="exportdata()">
+  </div>
 </ion-content>
