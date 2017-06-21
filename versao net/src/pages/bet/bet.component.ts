@@ -3,11 +3,11 @@ import { Angular2Csv } from 'angular2-csv/Angular2-csv';
 
 
 @Component({
-    templateUrl: "bet.template.html"
+  templateUrl:"bet.template.html"
 })
 export class BetApp {
-
-    public commonparts: Array<{ hteamname: string, ateamname: string, resultcalchome: number, resultcalcaway: number, finalcalc: number, hlast: string, alast: string, marketGoals: string, hmiddle: string, hinfluent: string, ainfluent: string, amiddle: string, weather: string }> = [];
+  
+    public commonparts: Array<{ competition:string,hteamname: string, ateamname: string, resultcalchome: number, resultcalcaway: number, finalcalc: number, hlast: string, alast: string, marketGoals: string, hmiddle: string, hinfluent: string, ainfluent: string, amiddle: string, weather: string }> = [];
     //home
     hh1: any;
     hh2: any;
@@ -43,7 +43,7 @@ export class BetApp {
 
 
     public addrow(): void {
-        this.commonparts.push({ hteamname: '', ateamname: '', resultcalchome: 0, resultcalcaway: 0, finalcalc: 0, hlast: '', alast: '', marketGoals: 'overOneHT', hmiddle: 'notknow', hinfluent: 'notknow', ainfluent: 'notknow', amiddle: 'notknow', weather: 'notknow' });
+        this.commonparts.push({ competition:'',hteamname: '', ateamname: '', resultcalchome: 0, resultcalcaway: 0, finalcalc: 0, hlast: '', alast: '', marketGoals: 'overOneHT', hmiddle: 'notknow', hinfluent: 'notknow', ainfluent: 'notknow', amiddle: 'notknow', weather: 'notknow' });
     }
 
     calchome(i: any) {
@@ -237,3 +237,4 @@ export class BetApp {
     }
 
 }
+
