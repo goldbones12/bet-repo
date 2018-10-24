@@ -1,0 +1,7 @@
+{
+  "name": "betnet",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

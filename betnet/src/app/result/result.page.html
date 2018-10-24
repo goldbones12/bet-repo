@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      List
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <div class="fixedwidth">
+    <ion-item>
+      <ion-label>Round</ion-label>
+      <ion-select [interfaceOptions]="customPopoverOptions" interface="popover" placeholder="Select One">
+        <ion-select-option *ngFor="let round of rounds" [value]="round">{{round.round}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </div>
+
+  <ion-row *ngFor="let result of results; let i = index">
+    <ion-grid no-lines>
+      <ion-row no-lines>
+        <ion-col class="fixedwidth">
+          <ion-select [(ngModel)]="results[i].hometeam" placeholder="Home Team" class="selectteam">
+            <ion-select-option *ngFor="let team of teams" [value]="team">{{team.team}}</ion-select-option>
+          </ion-select>
+        </ion-col>
+        <ion-col class="colnumeric">
+          <input class="inputnumeric" type="number" [value]="results[i].nGoalsHomeTeam" [(ngModel)]="results[i].nGoalsHomeTeam">
+        </ion-col>
+        <ion-col class="colT">-</ion-col>
+        <ion-col class="colnumeric">
+          <input class="inputnumeric" type="number" class="inputnumeric" [value]="results[i].nGoalsHomeTeam"
+            [(ngModel)]="results[i].nGoalsHomeTeam">
+        </ion-col>
+        <ion-col class="fixedwidth">
+          <ion-select [(ngModel)]="results[i].awayteam" placeholder="Away Team" class="selectteam">
+            <ion-select-option *ngFor="let team of teams" [value]="team">{{team.team}}</ion-select-option>
+          </ion-select>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-row>
+  <button (click)="addResult()">+</button>
+  <button (click)="download()">save</button>
+
+</ion-content>

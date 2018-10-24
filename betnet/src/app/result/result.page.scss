@@ -1,0 +1,45 @@
+
+ion-grid{
+        margin-left:0 !important;
+        margin-right:0 !important;
+}
+
+.fixedwidth{
+  max-width:30%;
+  
+}
+
+
+
+.selectteam{
+  max-width:25% !important;
+  min-width: 100% !important;
+}
+
+.colT{
+  max-width: 2%;
+}
+
+.inputnumeric{
+  max-width: 100%;
+}
+
+.colnumeric{
+  max-width: 10%;
+}
+
+ion-input {
+	background-color: #F3F3F3;
+	border: 1px solid #cecece;
+	padding-left: 10px;
+  
+}
+input native-input sc-ion-input-md {
+    max-width: 20% !important;
+}
+
+.sc-ion-select-md-h{
+  margin-top: 0px !important;
+  padding: inherit;
+}
+//inputnumeric ng-untouched ng-pristine ng-valid"
