@@ -10,18 +10,6 @@ const routes: Routes = [
   {
     path: 'home',
     loadChildren: './home/home.module#HomePageModule'
-  },
-  {
-    path: 'list',
-    loadChildren: './list/list.module#ListPageModule'
-  },
-  {
-    path: 'bet',
-    loadChildren: './bet/bet.module#BetAppPageModule'
-  },
-  {
-    path: 'result',
-    loadChildren: './result/result.module#ResultPageModule'
   }
 ];
 
