@@ -11,20 +11,28 @@
 <ion-content>
 
   <ion-item>
-    <ion-label>Select team</ion-label>
-    <ion-select [(ngModel)]="selectedTeam" (ionChange)="selectTeam($event)">
-        <ion-select-option *ngFor="let team of teamsLaLiga"   [value]="team">{{team.team}}</ion-select-option>
+    <ion-label>Select Home team</ion-label>
+    <ion-select [(ngModel)]="selectedHomeTeam">
+      <ion-select-option *ngFor="let team of teamsLaLiga">{{team}}</ion-select-option>
     </ion-select>
   </ion-item>
 
-  
+  <ion-item>
+    <ion-label>Select Away team</ion-label>
+    <ion-select [(ngModel)]="selectedAwayTeam">
+      <ion-select-option *ngFor="let team of teamsLaLiga" >{{team}}</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-button (click)="createChart()"></ion-button>
+
   <ion-card>
-      <ion-card-header>
-        Line Chart
-      </ion-card-header>
-      <ion-card-content>
-        <canvas #lineChart></canvas>
-      </ion-card-content>
-    </ion-card>
+    <ion-card-header>
+      Line Chart
+    </ion-card-header>
+    <ion-card-content>
+      <canvas #lineCanvas></canvas>
+    </ion-card-content>
+  </ion-card>
 
 </ion-content>

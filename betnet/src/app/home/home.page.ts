@@ -1,9 +1,9 @@
-import { Observable } from 'rxjs';
 import { Component, ViewChild } from '@angular/core';
-import { Chart } from 'chart.js';
-import { Team } from '../team/team';
 import { LaLigaTeamsService } from '../../service/laliga-teams.service';
 import { TeamDataFromFileService } from '../../service/team-data-from-file.service';
+import { LineChartBuild } from '../chart/line-chart-build';
+import { Team } from '../team/team';
+
 
 
 @Component({
@@ -15,92 +15,44 @@ import { TeamDataFromFileService } from '../../service/team-data-from-file.servi
 export class HomePage {
 
   teams: Team[] = [];
-  teamsLaLiga: Array<{ team: string }>;
+  teamsLaLiga: Array<string>;
   teamsdata: Team[];
-  selectedTeam: string;
+  selectedHomeTeam: string;
+  selectedAwayTeam: string;
 
+  @ViewChild('lineCanvas') lineCanvas;
 
-
-
-
-  @ViewChild('barCanvas') barCanvas;
-  @ViewChild('doughnutCanvas') doughnutCanvas;
-  @ViewChild('lineChart') lineChart;
-
-  barChart: any;
-  doughnutChart: any;
+  lineChart: any;
 
   constructor(private laLigaService: LaLigaTeamsService, private teamDataFromFileService: TeamDataFromFileService) {
-
     this.teamsLaLiga = laLigaService.laligateams2018;
-
   }
 
-
-  selectTeam(team: any): void {
-    this.createShartAtHome(team.detail.text);
-  }
-
-  createShartAtHome(team: string) {
+  createChart() {
 
     const dataGoalsHomeTeam = [];
-    const labelsHomeTeam = [];
-
-    const axisData: { x: string, y: string } = { x: '', y: '' };
-
-    const axisDataArray: { x: string, y: string }[] = [];
+    const labels = [];
+    const dataGoalsAwayTeam = [];
 
     this.teamsdata = this.teamDataFromFileService.teamsData;
 
-
     this.teamsdata.forEach(t => {
-      if (t.$homeTeam === team) {
-        labelsHomeTeam.push(t.$date);
+      if (t.$homeTeam === this.selectedHomeTeam) {
+        labels.push(t.$date);
         dataGoalsHomeTeam.push(t.$resultHome);
-        axisData.x = t.$date;
-        axisData.y = t.$resultHome;
-        axisDataArray.push(axisData);
       }
+      if (t.$awayTeam === this.selectedAwayTeam) {
+        if (labels.length <= 0) {
+          labels.push(t.$date);
+        }
+        dataGoalsAwayTeam.push(t.$resultAway);
+      }
+
     });
 
-    this.lineChart = new Chart(this.lineChart.nativeElement, {
-      type: 'line',
-      data: {
-        labels: labelsHomeTeam,
-        datasets: [{
-          label: '# of Goals',
-          data: dataGoalsHomeTeam,
-          fill: false,
-          lineTension: 0.1,
-          backgroundColor: "rgba(75,192,192,0.4)",
-          borderColor: "rgba(75,192,192,1)",
-          borderCapStyle: 'butt',
-          borderDash: [],
-          borderDashOffset: 0.0,
-          borderJoinStyle: 'miter',
-          pointBorderColor: "rgba(75,192,192,1)",
-          pointBackgroundColor: "#fff",
-          pointBorderWidth: 1,
-          pointHoverRadius: 5,
-          pointHoverBackgroundColor: "rgba(75,192,192,1)",
-          pointHoverBorderColor: "rgba(220,220,220,1)",
-          pointHoverBorderWidth: 2,
-          pointRadius: 1,
-          pointHitRadius: 10,
-          spanGaps: false,
-        }]
-      },
-      options: {
-        responsive: true,
-        scales: {
-          yAxes: [{
-            ticks: {
-              beginAtZero: true
-            }
-          }]
-        }
-      }
-    });
+    const lineChartBuild: LineChartBuild = new LineChartBuild();
+
+    this.lineChart = lineChartBuild.createChart(labels, dataGoalsHomeTeam, dataGoalsAwayTeam, this.lineCanvas.nativeElement);
   }
 
 }
