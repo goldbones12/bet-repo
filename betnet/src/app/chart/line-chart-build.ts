@@ -1,39 +1,37 @@
+import { GoalData } from './../model/goal-data';
 import { Chart } from 'chart.js';
+
+
+
 
 export class LineChartBuild {
 
+  readonly yellowColor = 'rgb(255,255,0)';
+  readonly blueColor = 'rgba(75,192,192,1)';
+  readonly oliveColor = 'rgb(116,115,0)';
+  readonly greenColor = 'rgb(116, 213, 0)';
 
-  public createChart(labels, scoredHomeTeamData, sufferedHomeTeamData, scoredAwayTeamData, sufferedAwayTeamData, nativeElement, homeTeam, awayTeam): Chart {
+
+  public createChart(goalData: GoalData, nativeElement, isHome, selectedTeam): Chart {
+
     return new Chart(nativeElement, {
       type: 'line',
       data: {
-        labels: labels,
+        labels: isHome ? goalData.labelsHome : goalData.labelsAway,
         datasets: [{
-          label: homeTeam + ' Goals',
-          data: scoredHomeTeamData,
+          label: selectedTeam,
+          data: isHome ? goalData.scoredHome : goalData.scoredAway,
           fill: false,
           lineTension: 0,
-          borderColor: 'rgba(75,192,192,1)',
+          borderColor: this.blueColor,
         }, {
-          label: 'Suffered goals home',
-          data: sufferedHomeTeamData,
+          label: 'Another teams',
+          data: isHome ? goalData.sufferedHome : goalData.sufferedAway,
           fill: false,
           lineTension: 0,
-          borderColor: 'rgb(255,255,0)',
+          borderColor: this.oliveColor,
         },
-        {
-          label: awayTeam + ' Goals',
-          data: scoredAwayTeamData,
-          fill: false,
-          lineTension: 0,
-          borderColor: 'rgba(75,192,192,1)',
-        }, {
-          label: 'Suffered goals home',
-          data: sufferedAwayTeamData,
-          fill: false,
-          lineTension: 0,
-          borderColor: 'rgb(128,128,0)',
-        }],
+        ],
       },
       options: {
         bezierCurve: false,

@@ -4,29 +4,91 @@
   <ion-item class="selw76">
     <ion-item>
       <div style="font-weight: bold">Select Home team:</div>
-      <ion-select [(ngModel)]="selectedHomeTeam" (ionChange)="createChart()">
+      <ion-select [(ngModel)]="selectedHomeTeam" (ionChange)="createChart('home')">
         <ion-select-option *ngFor="let team of teamsLaLiga">{{team}}</ion-select-option>
       </ion-select>
     </ion-item>
 
-    <ion-item >
+    <ion-item>
       <div style="font-weight: bold">Select away team:</div>
-      <ion-select [(ngModel)]="selectedAwayTeam" (ionChange)="createChart()">
+      <ion-select [(ngModel)]="selectedAwayTeam" (ionChange)="createChart('away')">
         <ion-select-option *ngFor="let team of teamsLaLiga">{{team}}</ion-select-option>
       </ion-select>
     </ion-item>
   </ion-item>
 
-  <div class="height">
+  <div class="height" style="min-width:50%; float: left;">
     <canvas #lineHomeCanvas></canvas>
   </div>
-
-
-  <div>
-   <div style="font-weight: bold"> Mean Last 5 scored homes:</div> {{meanHomeLast5}}
+  <div class="height" style="min-width:50%; float: left;">
+    <canvas #lineAwayCanvas></canvas>
   </div>
 
 
+  <div style="width: 100%;">
+    <div class="homePos">
+      <div class="table">
+        <div class="table-row">
+          <div class="table-cell">
+            <div style="padding-left: 16px; font-weight: bold; font-display: blue">
+              HOME RESULTS
+            </div>
+            <ion-item lines="none">
+              <div style="font-weight: bold">Past games:</div>
+              <ion-select (ionChange)="meanHomeTeam($event)">
+                <ion-select-option *ngFor="let number of numberOfGames">{{number}}</ion-select-option>
+              </ion-select>
+            </ion-item>
+          </div>
+        </div>
+        <div class="table-row">
+          <div class="table-cell">
+            <div style="padding-left: 16px">
+              Mean Scored: {{meanHomeScored}}
+            </div>
+            <div style="padding-left: 16px">
+              Mean Suffered: {{meanHomeSuffered}}
+            </div>
+            <div style="padding-left: 16px">
+              Mean Combined: {{meanHomeCombined}}
+            </div>
+          </div>
+        </div>
 
+      </div>
+
+    </div>
+    <div class="awayPos">
+      <div class="table">
+        <div class="table-row">
+          <div class="table-cell">
+            <div style="padding-left: 16px; font-weight: bold; font-display: blue">
+              AWAY RESULTS
+            </div>
+            <ion-item lines="none">
+              <div style="font-weight: bold">Past games:</div>
+              <ion-select (ionChange)="meanAwayTeam($event)">
+                <ion-select-option *ngFor="let number of numberOfGames">{{number}}</ion-select-option>
+              </ion-select>
+            </ion-item>
+          </div>
+        </div>
+        <div class="table-row">
+          <div class="table-cell">
+            <div style="padding-left: 16px">
+              Mean Scored: {{meanAwayScored}}
+            </div>
+            <div style="padding-left: 16px">
+              Mean Suffered: {{meanAwaySuffered}}
+            </div>
+            <div style="padding-left: 16px">
+              Mean Combined: {{meanAwayCombined}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="clear:both"></div>
 
 </ion-content>

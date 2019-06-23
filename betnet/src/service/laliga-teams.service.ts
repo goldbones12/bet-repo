@@ -1,9 +1,9 @@
 export class LaLigaTeamsService {
 
     public laligateams2018: Array<string> = [
-        'Alavés',
-        'Athletic Bilbao',
-        'Atlético Madrid',
+        'Alaves',
+        'Ath Bilbao',
+        'Atl. Madrid',
         'Barcelona',
         'Celta Vigo',
         'Eibar',
@@ -11,7 +11,7 @@ export class LaLigaTeamsService {
         'Getafe',
         'Girona',
         'Huesca',
-        'Leganés',
+        'Leganes',
         'Levante',
         'Rayo Vallecano',
         'Real Betis',

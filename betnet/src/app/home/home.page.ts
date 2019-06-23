@@ -1,3 +1,4 @@
+import { GoalData } from './../model/goal-data';
 import { Component, ViewChild } from '@angular/core';
 import { LaLigaTeamsService } from '../../service/laliga-teams.service';
 import { TeamDataFromFileService } from '../../service/team-data-from-file.service';
@@ -14,15 +15,15 @@ import { Team } from '../team/team';
 
 export class HomePage {
 
-  meanHomeLast5: number;
-  meanHomeOverall: number;
-  meanHomeLast5Combined: number;
-  meanHomeOverallCombined: number;
+  goalData: GoalData = new GoalData;
 
-  meanAwayLast5: number;
-  meanAwayOverall: number;
-  meanAwayLast5Combined: number;
-  meanAwayOverallCombined: number;
+  meanHomeScored: number;
+  meanHomeSuffered: number;
+  meanHomeCombined: number;
+
+  meanAwayScored: number;
+  meanAwaySuffered: number;
+  meanAwayCombined: number;
 
   teams: Team[] = [];
   teamsLaLiga: Array<string>;
@@ -33,74 +34,121 @@ export class HomePage {
   @ViewChild('lineHomeCanvas') lineHomeCanvas;
   @ViewChild('lineAwayCanvas') lineAwayCanvas;
 
+  numberOfGames = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19];
+
+  nGames: number;
+
   lineChart: any;
 
   constructor(private laLigaService: LaLigaTeamsService, private teamDataFromFileService: TeamDataFromFileService) {
     this.teamsLaLiga = laLigaService.laligateams2018;
   }
 
-
-
-
-  createChart() {
-    const dataGoalsSelectedTeam = [];
-    const dataGoalsAnotherTeam = [];
-    const dataGoalsScoredAwayTeam = [];
-    const dataGoalsSufferedAwayTeam = [];
-
-    let sumLast5GamesHome = 0;
-
-    const labels = [];
+  createChart(localOfGame: string) {
 
     this.teamsdata = this.teamDataFromFileService.teamsData;
 
+    const isHome: boolean = 'home' === localOfGame;
+
+    this.clearData(isHome);
+
+    this.populateData(isHome);
+
+    this.buildChart(isHome);
+
+  }
+
+  buildChart(isHome) {
+    const selectedTeam = isHome ? this.selectedHomeTeam : this.selectedAwayTeam;
+
+    const nativeElement = isHome ? this.lineHomeCanvas.nativeElement : this.lineAwayCanvas.nativeElement;
+
+    this.lineChart = new LineChartBuild().createChart(this.goalData, nativeElement, isHome, selectedTeam);
+  }
+
+  populateData(isHome) {
+    if (isHome) {
+      this.populateHomeTeamData();
+    } else {
+      this.populateAwayTeamData();
+    }
+
+  }
+
+  clearData(isHome: boolean) {
+
+
+    if (isHome) {
+      this.goalData.labelsHome = [];
+      this.goalData.scoredHome = [];
+      this.goalData.sufferedHome = [];
+
+    } else {
+      this.goalData.labelsAway = [];
+      this.goalData.scoredAway = [];
+      this.goalData.sufferedAway = [];
+    }
+  }
+
+  populateHomeTeamData() {
+
     this.teamsdata.forEach(t => {
       if (t.$homeTeam === this.selectedHomeTeam) {
-        labels.push(t.$round);
-        dataGoalsSelectedTeam.push(t.$resultHome);
-        dataGoalsAnotherTeam.push(t.$resultAway);
-      }
-
-      if (t.$awayTeam === this.selectedAwayTeam) {
-        labels.push(t.$round);
-        dataGoalsScoredAwayTeam.push(t.$resultAway);
-        dataGoalsSufferedAwayTeam.push(t.$resultHome);
+        this.goalData.labelsHome.push(t.$round);
+        this.goalData.scoredHome.push(t.$resultHome);
+        this.goalData.sufferedHome.push(t.$resultAway);
       }
     });
 
+  }
+
+  populateAwayTeamData() {
+    this.teamsdata.forEach(t => {
+      if (t.$awayTeam === this.selectedAwayTeam) {
+        this.goalData.labelsAway.push(t.$round);
+        this.goalData.sufferedAway.push(t.$resultAway);
+        this.goalData.scoredAway.push(t.$resultHome);
+      }
+    });
+
+    
+  }
+
+
+  meanHomeTeam(event) {
+
+    const lastNumberOfGames = Number(event.target.value);
+
+    const homeScoredByLastNOfGames = this.getNumberOfGoalsByNumberOfLastGames(lastNumberOfGames, this.goalData.scoredHome);
+    const homeSufferByLastNOfGames = this.getNumberOfGoalsByNumberOfLastGames(lastNumberOfGames, this.goalData.sufferedHome);
+
+    this.meanHomeScored = this.mean(homeScoredByLastNOfGames, lastNumberOfGames);
+    this.meanHomeSuffered = this.mean(homeSufferByLastNOfGames, lastNumberOfGames);
+    this.meanHomeCombined = this.meanCombined(homeScoredByLastNOfGames, homeSufferByLastNOfGames, lastNumberOfGames);
+  }
+
+  meanAwayTeam(event) {
+
+    const lastNumberOfGames = Number(event.target.value);
+
+    const awayScoredByLastNOfGames = this.getNumberOfGoalsByNumberOfLastGames(lastNumberOfGames, this.goalData.scoredAway);
+    const awaySufferByLastNOfGames = this.getNumberOfGoalsByNumberOfLastGames(lastNumberOfGames, this.goalData.sufferedAway);
+
+    this.meanAwayScored = this.mean(awayScoredByLastNOfGames, lastNumberOfGames);
+    this.meanAwaySuffered = this.mean(awaySufferByLastNOfGames, lastNumberOfGames);
+    this.meanAwayCombined = this.meanCombined(awayScoredByLastNOfGames, awaySufferByLastNOfGames, lastNumberOfGames);
+  }
 
 
 
-    this.meanHomeLast5 = this.mean(dataGoalsSelectedTeam.slice(Math.max(dataGoalsSelectedTeam.length - 5)), 5);
-    this.meanHomeOverall = this.mean(dataGoalsSelectedTeam, dataGoalsSelectedTeam.length);
-    this.meanHomeLast5Combined = this.meanCombined(dataGoalsSelectedTeam.slice(Math.max(dataGoalsSelectedTeam.length - 5)), dataGoalsAnotherTeam.slice(Math.max(dataGoalsAnotherTeam.length - 5)),
-      dataGoalsAnotherTeam.length);
-    this.meanHomeOverallCombined = this.meanCombined(dataGoalsSelectedTeam, dataGoalsAnotherTeam, dataGoalsSelectedTeam.length * 2);
-
-
-    this.meanAwayLast5 = this.mean(dataGoalsSelectedTeam.slice(Math.max(dataGoalsSelectedTeam.length - 5)), 5);
-    this.meanAwayOverall = this.mean(dataGoalsSelectedTeam, dataGoalsSelectedTeam.length);
-    this.meanAwayLast5Combined = this.meanCombined(dataGoalsSelectedTeam.slice(Math.max(dataGoalsSelectedTeam.length - 5)), dataGoalsAnotherTeam.slice(Math.max(dataGoalsAnotherTeam.length - 5)),
-      dataGoalsAnotherTeam.length);
-    this.meanAwayOverallCombined = this.meanCombined(dataGoalsSelectedTeam, dataGoalsAnotherTeam, dataGoalsSelectedTeam.length * 2);
-
-
-
-    const lineChartBuild: LineChartBuild = new LineChartBuild();
-
-
-    this.lineChart = lineChartBuild.createChart(labels, dataGoalsSelectedTeam,
-       dataGoalsAnotherTeam, dataGoalsScoredAwayTeam, dataGoalsSufferedAwayTeam,
-        this.lineHomeCanvas.nativeElement, this.selectedHomeTeam, this.selectedAwayTeam);
+  getNumberOfGoalsByNumberOfLastGames(lastNumberOfGames: number, data) {
+    return data.slice(Math.max(data.length - lastNumberOfGames));
   }
 
   mean(data: Array<any>, lengthData: number) {
     let sum = 0;
 
-    data.forEach(t => {
-      sum += Number(t)
-        ;
-    });
+    data.forEach(t => { sum += Number(t); });
 
     return sum / lengthData;
   }
@@ -122,5 +170,8 @@ export class HomePage {
 
     return (sumSelected + sumOther) / lengthData;
   }
+
+
+
 
 }
