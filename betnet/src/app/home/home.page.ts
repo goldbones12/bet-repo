@@ -14,13 +14,24 @@ import { Team } from '../team/team';
 
 export class HomePage {
 
+  meanHomeLast5: number;
+  meanHomeOverall: number;
+  meanHomeLast5Combined: number;
+  meanHomeOverallCombined: number;
+
+  meanAwayLast5: number;
+  meanAwayOverall: number;
+  meanAwayLast5Combined: number;
+  meanAwayOverallCombined: number;
+
   teams: Team[] = [];
   teamsLaLiga: Array<string>;
   teamsdata: Team[];
   selectedHomeTeam: string;
   selectedAwayTeam: string;
 
-  @ViewChild('lineCanvas') lineCanvas;
+  @ViewChild('lineHomeCanvas') lineHomeCanvas;
+  @ViewChild('lineAwayCanvas') lineAwayCanvas;
 
   lineChart: any;
 
@@ -28,31 +39,88 @@ export class HomePage {
     this.teamsLaLiga = laLigaService.laligateams2018;
   }
 
-  createChart() {
 
-    const dataGoalsHomeTeam = [];
+
+
+  createChart() {
+    const dataGoalsSelectedTeam = [];
+    const dataGoalsAnotherTeam = [];
+    const dataGoalsScoredAwayTeam = [];
+    const dataGoalsSufferedAwayTeam = [];
+
+    let sumLast5GamesHome = 0;
+
     const labels = [];
-    const dataGoalsAwayTeam = [];
 
     this.teamsdata = this.teamDataFromFileService.teamsData;
 
     this.teamsdata.forEach(t => {
       if (t.$homeTeam === this.selectedHomeTeam) {
-        labels.push(t.$date);
-        dataGoalsHomeTeam.push(t.$resultHome);
-      }
-      if (t.$awayTeam === this.selectedAwayTeam) {
-        if (labels.length <= 0) {
-          labels.push(t.$date);
-        }
-        dataGoalsAwayTeam.push(t.$resultAway);
+        labels.push(t.$round);
+        dataGoalsSelectedTeam.push(t.$resultHome);
+        dataGoalsAnotherTeam.push(t.$resultAway);
       }
 
+      if (t.$awayTeam === this.selectedAwayTeam) {
+        labels.push(t.$round);
+        dataGoalsScoredAwayTeam.push(t.$resultAway);
+        dataGoalsSufferedAwayTeam.push(t.$resultHome);
+      }
     });
+
+
+
+
+    this.meanHomeLast5 = this.mean(dataGoalsSelectedTeam.slice(Math.max(dataGoalsSelectedTeam.length - 5)), 5);
+    this.meanHomeOverall = this.mean(dataGoalsSelectedTeam, dataGoalsSelectedTeam.length);
+    this.meanHomeLast5Combined = this.meanCombined(dataGoalsSelectedTeam.slice(Math.max(dataGoalsSelectedTeam.length - 5)), dataGoalsAnotherTeam.slice(Math.max(dataGoalsAnotherTeam.length - 5)),
+      dataGoalsAnotherTeam.length);
+    this.meanHomeOverallCombined = this.meanCombined(dataGoalsSelectedTeam, dataGoalsAnotherTeam, dataGoalsSelectedTeam.length * 2);
+
+
+    this.meanAwayLast5 = this.mean(dataGoalsSelectedTeam.slice(Math.max(dataGoalsSelectedTeam.length - 5)), 5);
+    this.meanAwayOverall = this.mean(dataGoalsSelectedTeam, dataGoalsSelectedTeam.length);
+    this.meanAwayLast5Combined = this.meanCombined(dataGoalsSelectedTeam.slice(Math.max(dataGoalsSelectedTeam.length - 5)), dataGoalsAnotherTeam.slice(Math.max(dataGoalsAnotherTeam.length - 5)),
+      dataGoalsAnotherTeam.length);
+    this.meanAwayOverallCombined = this.meanCombined(dataGoalsSelectedTeam, dataGoalsAnotherTeam, dataGoalsSelectedTeam.length * 2);
+
+
 
     const lineChartBuild: LineChartBuild = new LineChartBuild();
 
-    this.lineChart = lineChartBuild.createChart(labels, dataGoalsHomeTeam, dataGoalsAwayTeam, this.lineCanvas.nativeElement);
+
+    this.lineChart = lineChartBuild.createChart(labels, dataGoalsSelectedTeam,
+       dataGoalsAnotherTeam, dataGoalsScoredAwayTeam, dataGoalsSufferedAwayTeam,
+        this.lineHomeCanvas.nativeElement, this.selectedHomeTeam, this.selectedAwayTeam);
+  }
+
+  mean(data: Array<any>, lengthData: number) {
+    let sum = 0;
+
+    data.forEach(t => {
+      sum += Number(t)
+        ;
+    });
+
+    return sum / lengthData;
+  }
+
+
+  meanCombined(dataSelected: Array<any>, dataOther: Array<any>, lengthData: number) {
+    let sumSelected = 0;
+    let sumOther = 0;
+
+    dataSelected.forEach(t => {
+      sumSelected += Number(t)
+        ;
+    });
+
+    dataOther.forEach(t => {
+      sumOther += Number(t)
+        ;
+    });
+
+    return (sumSelected + sumOther) / lengthData;
   }
 
 }

@@ -1,5 +1,5 @@
 export class Team {
-    private date: string;
+    private round: string;
     private homeTeam: string;
     private awayTeam: string;
     private resultHome: string;
@@ -8,8 +8,8 @@ export class Team {
 
 
 
-    public constructor($date: string, $homeTeam: string, $awayTeam: string, $resultHome: string, $resultAway: string) {
-        this.date = $date;
+    public constructor($round: string, $homeTeam: string, $awayTeam: string, $resultHome: string, $resultAway: string) {
+        this.round = $round;
         this.homeTeam = $homeTeam;
         this.awayTeam = $awayTeam;
         this.resultHome = $resultHome;
@@ -18,19 +18,19 @@ export class Team {
 
 
     /**
-     * Getter $date
+     * Getter $round
      * @return {string}
      */
-	public get $date(): string {
-		return this.date;
+	public get $round(): string {
+		return this.round;
 	}
 
     /**
-     * Setter $date
+     * Setter $round
      * @param {string} value
      */
-	public set $date(value: string) {
-		this.date = value;
+	public set $round(value: string) {
+		this.round = value;
 	}
 
     /**

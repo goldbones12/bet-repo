@@ -1,38 +1,32 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
-    <ion-title>
-      Home
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
 <ion-content>
 
-  <ion-item>
-    <ion-label>Select Home team</ion-label>
-    <ion-select [(ngModel)]="selectedHomeTeam">
-      <ion-select-option *ngFor="let team of teamsLaLiga">{{team}}</ion-select-option>
-    </ion-select>
+
+  <ion-item class="selw76">
+    <ion-item>
+      <div style="font-weight: bold">Select Home team:</div>
+      <ion-select [(ngModel)]="selectedHomeTeam" (ionChange)="createChart()">
+        <ion-select-option *ngFor="let team of teamsLaLiga">{{team}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item >
+      <div style="font-weight: bold">Select away team:</div>
+      <ion-select [(ngModel)]="selectedAwayTeam" (ionChange)="createChart()">
+        <ion-select-option *ngFor="let team of teamsLaLiga">{{team}}</ion-select-option>
+      </ion-select>
+    </ion-item>
   </ion-item>
 
-  <ion-item>
-    <ion-label>Select Away team</ion-label>
-    <ion-select [(ngModel)]="selectedAwayTeam">
-      <ion-select-option *ngFor="let team of teamsLaLiga" >{{team}}</ion-select-option>
-    </ion-select>
-  </ion-item>
+  <div class="height">
+    <canvas #lineHomeCanvas></canvas>
+  </div>
 
-  <ion-button (click)="createChart()"></ion-button>
 
-  <ion-card>
-    <ion-card-header>
-      Line Chart
-    </ion-card-header>
-    <ion-card-content>
-      <canvas #lineCanvas></canvas>
-    </ion-card-content>
-  </ion-card>
+  <div>
+   <div style="font-weight: bold"> Mean Last 5 scored homes:</div> {{meanHomeLast5}}
+  </div>
+
+
+
 
 </ion-content>
