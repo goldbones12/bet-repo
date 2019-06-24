@@ -17,13 +17,13 @@ export class HomePage {
 
   goalData: GoalData = new GoalData;
 
-  meanHomeScored: number;
-  meanHomeSuffered: number;
-  meanHomeCombined: number;
+  meanHomeScored: string;
+  meanHomeSuffered: string;
+  meanHomeCombined: string;
 
-  meanAwayScored: number;
-  meanAwaySuffered: number;
-  meanAwayCombined: number;
+  meanAwayScored: string;
+  meanAwaySuffered: string;
+  meanAwayCombined: string;
 
   teams: Team[] = [];
   teamsLaLiga: Array<string>;
@@ -69,8 +69,10 @@ export class HomePage {
   populateData(isHome) {
     if (isHome) {
       this.populateHomeTeamData();
+      this.clearMeanHomeValues();
     } else {
       this.populateAwayTeamData();
+      this.clearMeanAwayValues();
     }
 
   }
@@ -106,12 +108,12 @@ export class HomePage {
     this.teamsdata.forEach(t => {
       if (t.$awayTeam === this.selectedAwayTeam) {
         this.goalData.labelsAway.push(t.$round);
-        this.goalData.sufferedAway.push(t.$resultAway);
-        this.goalData.scoredAway.push(t.$resultHome);
+        this.goalData.sufferedAway.push(t.$resultHome);
+        this.goalData.scoredAway.push(t.$resultAway);
       }
     });
 
-    
+
   }
 
 
@@ -122,9 +124,9 @@ export class HomePage {
     const homeScoredByLastNOfGames = this.getNumberOfGoalsByNumberOfLastGames(lastNumberOfGames, this.goalData.scoredHome);
     const homeSufferByLastNOfGames = this.getNumberOfGoalsByNumberOfLastGames(lastNumberOfGames, this.goalData.sufferedHome);
 
-    this.meanHomeScored = this.mean(homeScoredByLastNOfGames, lastNumberOfGames);
-    this.meanHomeSuffered = this.mean(homeSufferByLastNOfGames, lastNumberOfGames);
-    this.meanHomeCombined = this.meanCombined(homeScoredByLastNOfGames, homeSufferByLastNOfGames, lastNumberOfGames);
+    this.meanHomeScored = this.mean(homeScoredByLastNOfGames, lastNumberOfGames).toFixed(2);
+    this.meanHomeSuffered = this.mean(homeSufferByLastNOfGames, lastNumberOfGames).toFixed(2);
+    this.meanHomeCombined = this.meanCombined(homeScoredByLastNOfGames, homeSufferByLastNOfGames, lastNumberOfGames).toFixed(2);
   }
 
   meanAwayTeam(event) {
@@ -134,15 +136,31 @@ export class HomePage {
     const awayScoredByLastNOfGames = this.getNumberOfGoalsByNumberOfLastGames(lastNumberOfGames, this.goalData.scoredAway);
     const awaySufferByLastNOfGames = this.getNumberOfGoalsByNumberOfLastGames(lastNumberOfGames, this.goalData.sufferedAway);
 
-    this.meanAwayScored = this.mean(awayScoredByLastNOfGames, lastNumberOfGames);
-    this.meanAwaySuffered = this.mean(awaySufferByLastNOfGames, lastNumberOfGames);
-    this.meanAwayCombined = this.meanCombined(awayScoredByLastNOfGames, awaySufferByLastNOfGames, lastNumberOfGames);
+    this.meanAwayScored = this.mean(awayScoredByLastNOfGames, lastNumberOfGames).toFixed(2);
+    this.meanAwaySuffered = this.mean(awaySufferByLastNOfGames, lastNumberOfGames).toFixed(2);
+    this.meanAwayCombined = this.meanCombined(awayScoredByLastNOfGames, awaySufferByLastNOfGames, lastNumberOfGames).toFixed(2);
+  }
+
+  clearMeanHomeValues() {
+    this.meanHomeScored = '';
+    this.meanHomeSuffered = '';
+    this.meanHomeCombined = '';
+  }
+
+  clearMeanAwayValues() {
+    this.meanAwayScored = '';
+    this.meanAwaySuffered = '';
+    this.meanAwayCombined = '';
   }
 
 
-
   getNumberOfGoalsByNumberOfLastGames(lastNumberOfGames: number, data) {
-    return data.slice(Math.max(data.length - lastNumberOfGames));
+
+    const dataSliceByNumberOfGames = data.slice(Math.max(data.length - lastNumberOfGames));
+
+    console.log('getNumberOfGoalsByNumberOfLastGames()', dataSliceByNumberOfGames);
+
+    return dataSliceByNumberOfGames;
   }
 
   mean(data: Array<any>, lengthData: number) {
