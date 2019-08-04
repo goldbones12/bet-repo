@@ -15,13 +15,24 @@ export class TeamDataFromFileService {
   teams: Team[] = [];
   teamsData: Team[];
 
+  readonly urlFullTime: string = 'assets/laliga_fullTime.csv';
+  readonly urlHalfTime: string = 'assets/laliga_halfTime.csv';
+
   constructor(private http: Http) {
-    this.loadTeamsFromFile();
   }
 
 
-  loadTeamsFromFile(): Team[] {
-    this.http.get('assets/laliga.csv')
+  loadTeamsFromFile(selectMarket: string): Team[] {
+    let url = '';
+
+    if (selectMarket === 'Half Time') {
+      url = this.urlHalfTime;
+    } else if (selectMarket === 'Full Time') {
+      url = this.urlFullTime;
+    }
+
+
+    this.http.get(url)
       .subscribe(
         data => {
           this.teamsData = this.getTeamsFromFile(data);
@@ -30,8 +41,8 @@ export class TeamDataFromFileService {
           console.log(error);
         }
       );
-      
-      return this.teamsData;
+
+    return this.teamsData;
   }
 
   public getTeamsFromFile(res): Team[] {

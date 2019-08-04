@@ -1,20 +1,20 @@
 export class LaLigaTeamsService {
 
-    public laligateams2018: Array<string> = [
+    public laligateams2019: Array<string> = [
         'Alaves',
-        'Ath Bilbao',
-        'Atl. Madrid',
+        'Athletic Bilbao',
+        'Atletico de Madrid',
         'Barcelona',
-        'Betis',
-        'Celta Vigo',
+        'Celta de Vigo',
         'Eibar',
         'Espanyol',
         'Getafe',
-        'Girona',
-        'Huesca',
+        'Granada',
         'Leganes',
         'Levante',
-        'Rayo Vallecano',
+        'Mallorca',
+        'Osasuna',
+        'Real Betis',
         'Real Madrid',
         'Real Sociedad',
         'Sevilla',
@@ -22,4 +22,6 @@ export class LaLigaTeamsService {
         'Valladolid',
         'Villarreal'
     ];
+
+
 }

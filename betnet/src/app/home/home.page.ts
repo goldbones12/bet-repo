@@ -31,6 +31,9 @@ export class HomePage {
   selectedHomeTeam: string;
   selectedAwayTeam: string;
 
+  selectedMarket: string;
+  public markets: Array<string> = ['Half Time', 'Full Time'];
+
   @ViewChild('lineHomeCanvas') lineHomeCanvas;
   @ViewChild('lineAwayCanvas') lineAwayCanvas;
 
@@ -41,7 +44,7 @@ export class HomePage {
   lineChart: any;
 
   constructor(private laLigaService: LaLigaTeamsService, private teamDataFromFileService: TeamDataFromFileService) {
-    this.teamsLaLiga = laLigaService.laligateams2018;
+    this.teamsLaLiga = laLigaService.laligateams2019;
   }
 
   createChart(localOfGame: string) {
@@ -189,7 +192,7 @@ export class HomePage {
     return (sumSelected + sumOther) / lengthData;
   }
 
-
+  setSelectedMarket(){};
 
 
 }

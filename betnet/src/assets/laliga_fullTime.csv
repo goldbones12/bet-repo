@@ -1,0 +1,380 @@
+1;Alaves;Levante
+1;Athletic Bilbao;Barcelona
+1;Atletico de Madrid;Getafe
+1;Real Betis;Valladolid
+1;Celta de Vigo;Real Madrid
+1;Espanyol;Sevilla
+1;Leganes;Osasuna
+1;Mallorca;Eibar
+1;Valencia;Real Sociedad
+1;Villarreal;Granada
+2;Alaves;Espanyol
+2;Barcelona;Real Betis
+2;Celta de Vigo;Valencia
+2;Getafe;Athletic Bilbao
+2;Granada;Sevilla
+2;Leganes;Atletico de Madrid
+2;Levante;Villarreal
+2;Mallorca;Real Sociedad
+2;Osasuna;Eibar
+2;Real Madrid;Valladolid
+3;Athletic Bilbao;Real Sociedad
+3;Atletico de Madrid;Eibar
+3;Real Betis;Leganes
+3;Espanyol;Granada
+3;Getafe;Alaves
+3;Levante;Valladolid
+3;Osasuna;Barcelona
+3;Sevilla;Celta de Vigo
+3;Valencia;Mallorca
+3;Villarreal;Real Madrid
+4;Alaves;Sevilla
+4;Barcelona;Valencia
+4;Real Betis;Getafe
+4;Celta de Vigo;Granada
+4;Eibar;Espanyol
+4;Leganes;Villarreal
+4;Mallorca;Athletic Bilbao
+4;Real Madrid;Levante
+4;Real Sociedad;Atletico de Madrid
+4;Valladolid;Osasuna
+5;Athletic Bilbao;Alaves
+5;Atletico de Madrid;Celta de Vigo
+5;Espanyol;Real Sociedad
+5;Getafe;Mallorca
+5;Granada;Barcelona
+5;Levante;Eibar
+5;Osasuna;Real Betis
+5;Sevilla;Real Madrid
+5;Valencia;Leganes
+5;Villarreal;Valladolid
+6;Barcelona;Villarreal
+6;Real Betis;Levante
+6;Celta de Vigo;Espanyol
+6;Eibar;Sevilla
+6;Leganes;Athletic Bilbao
+6;Mallorca;Atletico de Madrid
+6;Real Madrid;Osasuna
+6;Real Sociedad;Alaves
+6;Valencia;Getafe
+6;Valladolid;Granada
+7;Alaves;Mallorca
+7;Athletic Bilbao;Valencia
+7;Atletico de Madrid;Real Madrid
+7;Eibar;Celta de Vigo
+7;Espanyol;Valladolid
+7;Getafe;Barcelona
+7;Granada;Leganes
+7;Levante;Osasuna
+7;Sevilla;Real Sociedad
+7;Villarreal;Real Betis
+8;Barcelona;Sevilla
+8;Real Betis;Eibar
+8;Celta de Vigo;Athletic Bilbao
+8;Leganes;Levante
+8;Mallorca;Espanyol
+8;Osasuna;Villarreal
+8;Real Madrid;Granada
+8;Real Sociedad;Getafe
+8;Valencia;Alaves
+8;Valladolid;Atletico de Madrid
+9;Alaves;Celta de Vigo
+9;Athletic Bilbao;Valladolid
+9;Atletico de Madrid;Valencia
+9;Eibar;Barcelona
+9;Espanyol;Villarreal
+9;Getafe;Leganes
+9;Granada;Osasuna
+9;Mallorca;Real Madrid
+9;Real Sociedad;Real Betis
+9;Sevilla;Levante
+10;Atletico de Madrid;Athletic Bilbao
+10;Barcelona;Real Madrid
+10;Celta de Vigo;Real Sociedad
+10;Granada;Real Betis
+10;Leganes;Mallorca
+10;Levante;Espanyol
+10;Osasuna;Valencia
+10;Sevilla;Getafe
+10;Villarreal;Alaves
+10;Valladolid;Eibar
+11;Alaves;Atletico de Madrid
+11;Athletic Bilbao;Espanyol
+11;Barcelona;Valladolid
+11;Real Betis;Celta de Vigo
+11;Eibar;Villarreal
+11;Getafe;Granada
+11;Mallorca;Osasuna
+11;Real Madrid;Leganes
+11;Real Sociedad;Levante
+11;Valencia;Sevilla
+12;Celta de Vigo;Getafe
+12;Espanyol;Valencia
+12;Granada;Real Sociedad
+12;Leganes;Eibar
+12;Levante;Barcelona
+12;Osasuna;Alaves
+12;Real Madrid;Real Betis
+12;Sevilla;Atletico de Madrid
+12;Villarreal;Athletic Bilbao
+12;Valladolid;Mallorca
+13;Alaves;Valladolid
+13;Athletic Bilbao;Levante
+13;Atletico de Madrid;Espanyol
+13;Barcelona;Celta de Vigo
+13;Real Betis;Sevilla
+13;Eibar;Real Madrid
+13;Getafe;Osasuna
+13;Mallorca;Villarreal
+13;Real Sociedad;Leganes
+13;Valencia;Granada
+14;Real Betis;Valencia
+14;Eibar;Alaves
+14;Espanyol;Getafe
+14;Granada;Atletico de Madrid
+14;Leganes;Barcelona
+14;Levante;Mallorca
+14;Osasuna;Athletic Bilbao
+14;Real Madrid;Real Sociedad
+14;Villarreal;Celta de Vigo
+14;Valladolid;Sevilla
+15;Alaves;Real Madrid
+15;Athletic Bilbao;Granada
+15;Atletico de Madrid;Barcelona
+15;Celta de Vigo;Valladolid
+15;Espanyol;Osasuna
+15;Getafe;Levante
+15;Mallorca;Real Betis
+15;Real Sociedad;Eibar
+15;Sevilla;Leganes
+15;Valencia;Villarreal
+16;Barcelona;Mallorca
+16;Real Betis;Athletic Bilbao
+16;Eibar;Getafe
+16;Granada;Alaves
+16;Leganes;Celta de Vigo
+16;Levante;Valencia
+16;Osasuna;Sevilla
+16;Real Madrid;Espanyol
+16;Villarreal;Atletico de Madrid
+16;Valladolid;Real Sociedad
+17;Alaves;Leganes
+17;Athletic Bilbao;Eibar
+17;Atletico de Madrid;Osasuna
+17;Celta de Vigo;Mallorca
+17;Espanyol;Real Betis
+17;Getafe;Valladolid
+17;Granada;Levante
+17;Real Sociedad;Barcelona
+17;Sevilla;Villarreal
+17;Valencia;Real Madrid
+18;Barcelona;Alaves
+18;Real Betis;Atletico de Madrid
+18;Eibar;Granada
+18;Leganes;Espanyol
+18;Levante;Celta de Vigo
+18;Mallorca;Sevilla
+18;Osasuna;Real Sociedad
+18;Real Madrid;Athletic Bilbao
+18;Villarreal;Getafe
+18;Valladolid;Valencia
+19;Alaves;Real Betis
+19;Atletico de Madrid;Levante
+19;Celta de Vigo;Osasuna
+19;Espanyol;Barcelona
+19;Getafe;Real Madrid
+19;Granada;Mallorca
+19;Real Sociedad;Villarreal
+19;Sevilla;Athletic Bilbao
+19;Valencia;Eibar
+19;Valladolid;Leganes
+20;Athletic Bilbao;Celta de Vigo
+20;Barcelona;Granada
+20;Real Betis;Real Sociedad
+20;Eibar;Atletico de Madrid
+20;Leganes;Getafe
+20;Levante;Alaves
+20;Mallorca;Valencia
+20;Osasuna;Valladolid
+20;Real Madrid;Sevilla
+20;Villarreal;Espanyol
+21;Alaves;Villarreal
+21;Atletico de Madrid;Leganes
+21;Celta de Vigo;Eibar
+21;Espanyol;Athletic Bilbao
+21;Getafe;Real Betis
+21;Osasuna;Levante
+21;Real Sociedad;Mallorca
+21;Sevilla;Granada
+21;Valencia;Barcelona
+21;Valladolid;Real Madrid
+22;Athletic Bilbao;Getafe
+22;Barcelona;Levante
+22;Eibar;Real Betis
+22;Granada;Espanyol
+22;Leganes;Real Sociedad
+22;Mallorca;Valladolid
+22;Real Madrid;Atletico de Madrid
+22;Sevilla;Alaves
+22;Valencia;Celta de Vigo
+22;Villarreal;Osasuna
+23;Alaves;Eibar
+23;Atletico de Madrid;Granada
+23;Real Betis;Barcelona
+23;Celta de Vigo;Sevilla
+23;Espanyol;Mallorca
+23;Getafe;Valencia
+23;Levante;Leganes
+23;Osasuna;Real Madrid
+23;Real Sociedad;Athletic Bilbao
+23;Valladolid;Villarreal
+24;Athletic Bilbao;Osasuna
+24;Barcelona;Getafe
+24;Eibar;Real Sociedad
+24;Granada;Valladolid
+24;Leganes;Real Betis
+24;Mallorca;Alaves
+24;Real Madrid;Celta de Vigo
+24;Sevilla;Espanyol
+24;Valencia;Atletico de Madrid
+24;Villarreal;Levante
+25;Alaves;Athletic Bilbao
+25;Atletico de Madrid;Villarreal
+25;Barcelona;Eibar
+25;Real Betis;Mallorca
+25;Celta de Vigo;Leganes
+25;Getafe;Sevilla
+25;Levante;Real Madrid
+25;Osasuna;Granada
+25;Real Sociedad;Valencia
+25;Valladolid;Espanyol
+26;Athletic Bilbao;Villarreal
+26;Eibar;Levante
+26;Espanyol;Atletico de Madrid
+26;Granada;Celta de Vigo
+26;Leganes;Alaves
+26;Mallorca;Getafe
+26;Real Madrid;Barcelona
+26;Real Sociedad;Valladolid
+26;Sevilla;Osasuna
+26;Valencia;Real Betis
+27;Alaves;Valencia
+27;Atletico de Madrid;Sevilla
+27;Barcelona;Real Sociedad
+27;Real Betis;Real Madrid
+27;Eibar;Mallorca
+27;Getafe;Celta de Vigo
+27;Levante;Granada
+27;Osasuna;Espanyol
+27;Villarreal;Leganes
+27;Valladolid;Athletic Bilbao
+28;Athletic Bilbao;Atletico de Madrid
+28;Celta de Vigo;Villarreal
+28;Espanyol;Alaves
+28;Granada;Getafe
+28;Leganes;Valladolid
+28;Mallorca;Barcelona
+28;Real Madrid;Eibar
+28;Real Sociedad;Osasuna
+28;Sevilla;Real Betis
+28;Valencia;Levante
+29;Alaves;Real Sociedad
+29;Barcelona;Leganes
+29;Real Betis;Granada
+29;Eibar;Athletic Bilbao
+29;Getafe;Espanyol
+29;Levante;Sevilla
+29;Osasuna;Atletico de Madrid
+29;Real Madrid;Valencia
+29;Villarreal;Mallorca
+29;Valladolid;Celta de Vigo
+30;Athletic Bilbao;Real Betis
+30;Atletico de Madrid;Valladolid
+30;Celta de Vigo;Alaves
+30;Espanyol;Levante
+30;Getafe;Eibar
+30;Granada;Villarreal
+30;Mallorca;Leganes
+30;Real Sociedad;Real Madrid
+30;Sevilla;Barcelona
+30;Valencia;Osasuna
+31;Alaves;Osasuna
+31;Barcelona;Athletic Bilbao
+31;Real Betis;Espanyol
+31;Eibar;Valencia
+31;Leganes;Granada
+31;Levante;Atletico de Madrid
+31;Real Madrid;Mallorca
+31;Real Sociedad;Celta de Vigo
+31;Villarreal;Sevilla
+31;Valladolid;Getafe
+32;Athletic Bilbao;Mallorca
+32;Atletico de Madrid;Alaves
+32;Celta de Vigo;Barcelona
+32;Espanyol;Real Madrid
+32;Getafe;Real Sociedad
+32;Granada;Eibar
+32;Levante;Real Betis
+32;Osasuna;Leganes
+32;Sevilla;Valladolid
+32;Villarreal;Valencia
+33;Alaves;Granada
+33;Barcelona;Atletico de Madrid
+33;Real Betis;Villarreal
+33;Eibar;Osasuna
+33;Leganes;Sevilla
+33;Mallorca;Celta de Vigo
+33;Real Madrid;Getafe
+33;Real Sociedad;Espanyol
+33;Valencia;Athletic Bilbao
+33;Valladolid;Levante
+34;Athletic Bilbao;Real Madrid
+34;Atletico de Madrid;Mallorca
+34;Celta de Vigo;Real Betis
+34;Espanyol;Leganes
+34;Granada;Valencia
+34;Levante;Real Sociedad
+34;Osasuna;Getafe
+34;Sevilla;Eibar
+34;Villarreal;Barcelona
+34;Valladolid;Alaves
+35;Athletic Bilbao;Sevilla
+35;Barcelona;Espanyol
+35;Real Betis;Osasuna
+35;Celta de Vigo;Atletico de Madrid
+35;Eibar;Leganes
+35;Getafe;Villarreal
+35;Mallorca;Levante
+35;Real Madrid;Alaves
+35;Real Sociedad;Granada
+35;Valencia;Valladolid
+36;Alaves;Getafe
+36;Atletico de Madrid;Real Betis
+36;Espanyol;Eibar
+36;Granada;Real Madrid
+36;Leganes;Valencia
+36;Levante;Athletic Bilbao
+36;Osasuna;Celta de Vigo
+36;Sevilla;Mallorca
+36;Villarreal;Real Sociedad
+36;Valladolid;Barcelona
+37;Athletic Bilbao;Leganes
+37;Barcelona;Osasuna
+37;Real Betis;Alaves
+37;Celta de Vigo;Levante
+37;Eibar;Valladolid
+37;Getafe;Atletico de Madrid
+37;Mallorca;Granada
+37;Real Madrid;Villarreal
+37;Real Sociedad;Sevilla
+37;Valencia;Espanyol
+38;Alaves;Barcelona
+38;Atletico de Madrid;Real Sociedad
+38;Espanyol;Celta de Vigo
+38;Granada;Athletic Bilbao
+38;Leganes;Real Madrid
+38;Levante;Getafe
+38;Osasuna;Mallorca
+38;Sevilla;Valencia
+38;Villarreal;Eibar
+38;Valladolid;Real Betis
