@@ -39,7 +39,7 @@
     "cordova-plugin-file-transfer": "1.7.1",
     "core-js": "^2.5.3",
     "file-saver": "^2.0.0-rc.3",
-    "papaparse": "^4.6.3",
+    "papaparse": "^5.2.0",
     "rxjs": "6.2.2",
     "rxjs-compat": "^6.4.0",
     "zone.js": "^0.8.26"
